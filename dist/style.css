@@ -1,0 +1,209 @@
+/* CSS Variables */
+:root {
+  --primary: #ddd;
+  --dark: #333;
+  --light: #fff;
+  --shadow: 0 ipx 5px rgba(104, 104, 104 0.8);
+}
+
+/* Core styles */
+
+html {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--dark);
+}
+
+body {
+  background-color: #ccc;
+  margin: 30px 50px;
+  line-height: 1.4;
+}
+
+.btn {
+  background-color: var(--dark);
+  color: var(--light);
+  padding: 0.6rem 1.3rem;
+  text-decoration: none;
+  border: 0;
+}
+
+img {
+  /* Make images 100% of their container */
+  max-width: 100%;
+}
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+}
+
+/* now let's style each part of the page, top to bottom */
+
+/* navigation */
+.main-nav ul {
+  display: grid;
+  grid-gap: 20px;
+  padding: 0;
+  list-style: none;
+  /* space out the nav links into 4 columns of 1fr */
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Now style each nav link  */
+
+.main-nav a {
+  background-color: var(--primary);
+  display: block;
+  text-decoration: none;
+  padding: 0.8rem;
+  text-align: center;
+  color: var(--dark);
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow);
+}
+/* link hover state */
+.main-nav a:hover {
+  background-color: var(--dark);
+  color: var(--light);
+}
+
+/* Top Container */
+.top-container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-areas:
+    "showcase showcase  top-box-a"
+    "showcase showcase  top-box-b";
+}
+/* assign grid areas to template above and style each one */
+.showcase {
+  grid-area: showcase;
+  min-height: 400px;
+  background: url(/img/showcase.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 3rem;
+ /* use grid to align the boxes of the page, then use flexbox to align the elements inside */
+ display: flex;
+ flex-direction: column;
+ align-items: start;
+ justify-content: center;
+ box-shadow: var(--shadow);
+}
+
+/* now style the inner elements of showcase */
+.showcase h1 {
+  font-size: 4rem;
+  margin-bottom: 0;
+  color: var(--light);
+}
+.showcase p {
+  font-size: 1.3rem;
+  color: var(--light);
+  margin-top: 0;
+}
+
+/* style top-box */
+.top-box {
+  background: var(--primary);
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+.top-box .price {
+  font-size: 2.5rem;
+}
+
+.top-box-a {
+  grid-area: top-box-a;
+}
+}
+.top-box-b {
+  grid-area: top-box-b;
+}
+
+/* boxes */
+
+/* place boxes in grid */
+.boxes {
+  display: grid;
+  grid-gap: 20px;
+  /* grid-template-columns: repeat(4, 1fr); */
+   /* if you plan on adding extra boxes, could use */
+  /* grid-template-columns: repeat(auto-fit, mimmax(200px, 1fr));  */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  
+}
+/* style each box */
+.box {
+  background-color: var(--primary);
+  text-align: center;
+  padding: 1.5rem 2rem;
+  box-shadow: var(--shadow);
+}
+
+/* info section */
+.info {
+  background: var(--primary);
+  box-shadow: var(--shadow);
+  display:grid;
+  padding: 3rem;
+  grid-gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* portfolio */
+.portfolio {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.portfolio img {
+  width: 100%;
+  box-shadow: var(--shadow);
+}
+
+/* footer */
+footer {
+  margin-top: 2rem;
+  background: var(--dark);
+  color: var(--light);
+  padding: 1rem;
+  text-align: center;
+}
+
+/* media queries */
+@media(max-width: 700px){
+  .top-container {
+    grid-template-areas: 
+    'showcase showcase'
+    'top-box-a top-box-b'
+    ;
+  }
+  .showcase h1 {
+    font-size: 2.5rem;
+  }
+  .main-nav ul {
+    grid-template-columns: 1fr;
+  }
+  .info {
+    grid-template-columns: 1fr;
+  }
+  .info .btn {
+    display: block;
+    text-align: center;
+    margin: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .top-container {
+    grid-template-areas:
+    'showcase'
+    'top-box-a'
+    'top-box-b';
+  }
+}
